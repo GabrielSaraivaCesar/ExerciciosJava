@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class Modelo {
+class Ex10 {
 
   public static void main(String[] args) {
     // Variaveis
@@ -30,27 +30,18 @@ class Modelo {
   }
 
   public static void execise(Integer[][] arr) {
+    Integer[][] transposta = new Integer[arr[0].length][arr.length];
 
-  }
-
-  public static Integer[] arrayPush(Integer[] arr, Integer item) {
-    Integer[] tempArray = new Integer[arr.length + 1];
-    for (int counter = 0; counter < arr.length; counter++) {
-      tempArray[counter] = arr[counter];
-    }
-    tempArray[tempArray.length - 1] = item;
-    return tempArray;
-  }
-
-  public static Integer getFactorial(Integer number) {
-    Integer factorial = 1, counter = number;
-
-    while (counter > 1) {
-      factorial *= counter;
-      counter--;
+    for (int row = 0; row < arr.length; row++) {
+      for (int col = 0; col < arr[0].length; col++) {
+        transposta[col][row] = arr[row][col];
+      }
     }
 
-    return factorial;
+    System.out.println("Matriz");
+    printArray(arr);
+    System.out.println("Transposta:");
+    printArray(transposta);
   }
 
   public static void printArray(Integer[][] arr) {
@@ -71,27 +62,6 @@ class Modelo {
         } else {
           result += ", ";
         }
-      }
-    }
-    System.out.println(result);
-  }
-
-  public static void printArray(Integer[] arr) {
-    String result = "";
-    for (int counter = 0; counter < arr.length; counter++) {
-      if (arr[counter] == null) {
-        break;
-      }
-      if (counter == 0) {
-        result += "[";
-      }
-
-      result += arr[counter].toString();
-
-      if (counter == arr.length - 1) {
-        result += "]\n";
-      } else {
-        result += ", ";
       }
     }
     System.out.println(result);

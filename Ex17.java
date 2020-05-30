@@ -1,18 +1,18 @@
 import java.util.Scanner;
 
-class Modelo {
+class Ex17 {
 
   public static void main(String[] args) {
     // Variaveis
-    Integer[][] arr = new Integer[4][2];
+    Integer[][] arr = new Integer[4][4];
+    Integer[] arrB = new Integer[4];
     Integer maxItems = arr.length * arr[0].length;
     Integer row = 0, col = 0;
     Scanner keyboard = new Scanner(System.in);
 
     // Montagem da matriz
     for (int counter = 0; counter < maxItems; counter++) {
-      System.out.println("Digite um numero inteiro para acrecentar na matriz:");
-      arr[row][col] = keyboard.nextInt();
+      arr[row][col] = 0;
 
       if (col == arr[row].length - 1) {
         col = 0;
@@ -21,36 +21,36 @@ class Modelo {
         col++;
       }
 
-      printArray(arr);
+    }
+
+    for (int counter = 0; counter < arrB.length; counter++) {
+      System.out.println("Digite um valor inteiro para inserir no vetor:");
+      arrB[counter] = keyboard.nextInt();
+
+      printArray(arrB);
+
     }
 
     // Execucao do exercicio proposto
-    execise(arr);
+    execise(arr, arrB);
 
   }
 
-  public static void execise(Integer[][] arr) {
+  public static void execise(Integer[][] arr, Integer[] vector) {
+    Integer[][] result = arr;
+    Integer col = arr[0].length - 1;
 
-  }
+    for (int row = 0; row < arr.length; row++) {
+      result[row][col] = vector[row];
 
-  public static Integer[] arrayPush(Integer[] arr, Integer item) {
-    Integer[] tempArray = new Integer[arr.length + 1];
-    for (int counter = 0; counter < arr.length; counter++) {
-      tempArray[counter] = arr[counter];
-    }
-    tempArray[tempArray.length - 1] = item;
-    return tempArray;
-  }
-
-  public static Integer getFactorial(Integer number) {
-    Integer factorial = 1, counter = number;
-
-    while (counter > 1) {
-      factorial *= counter;
-      counter--;
+      col--;
     }
 
-    return factorial;
+    System.out.println("Vetor:");
+    printArray(vector);
+
+    System.out.println("Matriz:");
+    printArray(result);
   }
 
   public static void printArray(Integer[][] arr) {
